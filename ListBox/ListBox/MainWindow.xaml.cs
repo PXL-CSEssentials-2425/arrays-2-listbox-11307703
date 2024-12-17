@@ -79,15 +79,18 @@ namespace ListBox
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            int index = 0;
+            int index = 1;
+            
             foreach(ListBoxItem item in simpleListBox.Items)
             {
-               if(item.Content.Equals(txtSearch.Text))
+                if (!item.Content.ToString().Equals(txtSearch.Text))
                 {
-                    index = simpleListBox.SelectedIndex;
+                    index++;
+                }
+                else
+                {
                     break;
                 }
-                index++;
             }
             searchLabel.Content = $"Naam gevonden op positie:\n {index} " ;
         }
