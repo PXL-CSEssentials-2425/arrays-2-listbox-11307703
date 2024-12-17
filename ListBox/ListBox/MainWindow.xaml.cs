@@ -46,7 +46,26 @@ namespace ListBox
 
         private void btnSort_Click(object sender, RoutedEventArgs e)
         {
-            simpleListBox.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("Content", System.ComponentModel.ListSortDirection.Ascending));
+            //simpleListBox.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("Content", System.ComponentModel.ListSortDirection.Ascending));
+
+            //string[] array van de ListBox items
+            string[] name = new string[simpleListBox.Items.Count];
+
+            for (int i = 0; i < simpleListBox.Items.Count; i++)
+            {
+                ListBoxItem listItem = (ListBoxItem)simpleListBox.Items[i];
+                name[i] = listItem.Content.ToString();
+            }
+
+            Array.Sort(name);
+            simpleListBox.Items.Clear();
+
+            foreach (string str in name)
+            {
+                ListBoxItem newItem = new ListBoxItem();
+                newItem.Content = str;
+                simpleListBox.Items.Add(newItem);
+            }
         }
 
         private void btnReplace_Click(object sender, RoutedEventArgs e)
